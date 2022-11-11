@@ -4,15 +4,17 @@ from yt_dlp import YoutubeDL
 import ffmpeg
 from PIL import Image
 import multiprocessing
-import playsound
+from playsound import playsound
 import time
 
 # Options that you can change!
 VIDEO_NAME = "video.webm"
 YOUTUBE_URL = ["https://www.youtube.com/watch?v=FtutLA63Cp8"]
 FRAMERATE = 30
-QUIET = False
-SKIP_SETUP = True
+QUIET = True
+SKIP_SETUP = False
+CHAR_LIGHT = "#"
+CHAR_DARK = " "
 
 VIDEO_FILE = f"assets/{VIDEO_NAME}"
 AUDIO_FILE = os.path.join("assets", "audio.mp3")
@@ -85,9 +87,9 @@ if not(os.path.isfile(ASCII_FILE) and os.path.isfile(AUDIO_FILE) and SKIP_SETUP)
         text_frame = ""
         for pixel_brightness in image.getdata(0):
             if pixel_brightness > 50:
-                text_frame += "#"
+                text_frame += CHAR_LIGHT
             else:
-                text_frame += " "
+                text_frame += CHAR_DARK
 
         text_frames.append(text_frame)
         count += 1
@@ -112,7 +114,8 @@ input("\n[READY] Bad Apple!! is ready. Press enter to play." )
 
 os.system(clear_command)
 
-play_audio = multiprocessing.Process(target=playsound.playsound, args=(AUDIO_FILE,), daemon=True)
+multiprocessing.set_start_method("fork")
+play_audio = multiprocessing.Process(target=playsound, args=(AUDIO_FILE,), daemon=True)
 play_audio.start()
 
 for frame in text_frames:
