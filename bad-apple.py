@@ -11,7 +11,7 @@ import time
 VIDEO_NAME = "video.webm"
 YOUTUBE_URL = ["https://www.youtube.com/watch?v=FtutLA63Cp8"]
 FRAMERATE = 30
-QUIET = True
+QUIET = False
 SKIP_SETUP = False
 CHAR_LIGHT = "#"
 CHAR_DARK = " "
