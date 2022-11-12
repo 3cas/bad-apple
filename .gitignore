@@ -1,4 +1,7 @@
+__pycache__
+frames/
+stored/
+config.json
 video.webm
 audio.mp3
 ascii.txt
-frames/

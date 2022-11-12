@@ -1,13 +1,17 @@
 import os
 import shutil
 
-for filename in ["video.webm", "audio.mp3", "ascii.txt"]:
+def reset_files():
+    for filename in ["video.webm", "audio.mp3", "ascii.txt"]:
+        try:
+            os.remove(os.path.join("assets", filename))
+        except:
+            pass
+
     try:
-        os.remove(os.path.join("assets", filename))
+        shutil.rmtree("frames")
     except:
         pass
 
-try:
-    shutil.rmtree("frames")
-except:
-    pass
+if __name__ == "__main__":
+    reset_files()
