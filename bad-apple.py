@@ -11,6 +11,7 @@ import json
 from reset import reset_files
 
 if not os.path.isfile("config.json"):
+    # do not change these, instead change them in config.json which gets generated
     default_options = {
         "youtube_url": "https://www.youtube.com/watch?v=FtutLA63Cp8",
         "video_name": "video.webm",
@@ -18,7 +19,8 @@ if not os.path.isfile("config.json"):
         "quiet": False,
         "skip_setup": False,
         "auto_reset": False,
-        "shading": [" ", ".", "/", "X", "#"]
+        "delete_frames": False,
+        "shading": [" ", ".", ":", "=", "#"]
     }
 
     with open("config.json", "w") as f:
