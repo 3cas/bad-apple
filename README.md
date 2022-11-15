@@ -34,3 +34,7 @@ Config options:
 - `reset-url.py` - Automatically resets the URL to Bad Apple!! in `config.json`
 - `store.py [name]` - Copies audio and ASCII to named storage directory. The argument is optional, it will ask you for the name.
 - `load.py [name]` - Copies audio and ASCII from named storage into the main directories. It will overwrite whatever current files are downloaded.
+
+### Bonus
+
+`small-apple.py` is the result of me challenging myself to make a Bad Apple!! script as small as possible. It only plays Bad Apple!! and expects you to run it in a directory without files already in it. It is very counter-intuitive because I prioritized making it short. Only 452 characters! Also, as far as I know, Small Apple!! only runs properly on Linux, but feel free to try it on other operating systems.
