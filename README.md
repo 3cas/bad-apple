@@ -1,7 +1,7 @@
 # bad-apple
 Play any video (originally Bad Apple!!) in the terminal using Python
 
-This project is heavily inspired by [Ubuntufanboy's Bad Apple!! code](https://github.com/Ubuntufanboy/bad-apple) and it uses the same method (but I wrote all the code myself).
+This project is heavily inspired by [Ubuntufanboy's Bad Apple!! code](https://github.com/Ubuntufanboy/bad-apple) and it uses a similar download/conversion method (but I wrote all the code myself).
 
 Currently only runs properly on Linux. Mac is lacking audio, and I haven't tested Windows yet.
 
@@ -37,4 +37,4 @@ Config options:
 
 ### Bonus
 
-`small-apple.py` is the result of me challenging myself to make a Bad Apple!! script as small as possible. It only plays Bad Apple!! and expects you to run it in a directory without files already in it. It is very counter-intuitive because I prioritized making it short. Only 452 characters! Also, as far as I know, Small Apple!! only runs properly on Linux, but feel free to try it on other operating systems.
+`small-apple.py` is the result of me challenging myself to make a Bad Apple!! script as small as possible. It only plays Bad Apple!! and expects you to run it in a directory without files already in it. It is very counter-intuitive because I prioritized making it short. Only 452 characters!
