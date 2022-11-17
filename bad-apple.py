@@ -16,6 +16,7 @@ if not os.path.isfile("config.json"):
         "youtube_url": "https://www.youtube.com/watch?v=FtutLA63Cp8",
         "video_name": "video.webm",
         "framerate": 30,
+        "color": True,
         "quiet": False,
         "skip_setup": False,
         "auto_reset": False,
@@ -106,20 +107,22 @@ if not(os.path.isfile(ascii_file) and os.path.isfile(audio_file) and config["ski
         text_frame = ""
 
         for pixel_rgb in list(image.getdata()):
-            brightness = int((pixel_rgb[0] + pixel_rgb[1] + pixel_rgb[2]) / 3)
+            r = pixel_rgb[0]
+            g = pixel_rgb[1]
+            b = pixel_rgb[2]
 
-            if brightness <= 51:
-                text_frame += config["shading"][0]
-            elif brightness <= 102:
-                text_frame += config["shading"][1]
-            elif brightness <= 153:
-                text_frame += config["shading"][2]
-            elif brightness <= 204:
-                text_frame += config["shading"][3]
-            elif brightness <= 255:
-                text_frame += config["shading"][4]
-            else:
-                print("huh")
+            brightness = int((r + g + b) / 3)
+
+            if brightness <= 51:    pixel = config["shading"][0]
+            elif brightness <= 102: pixel = config["shading"][1]
+            elif brightness <= 153: pixel = config["shading"][2]
+            elif brightness <= 204: pixel = config["shading"][3]
+            elif brightness <= 255: pixel = config["shading"][4]
+            else:                   pixel = "?"
+
+            if config["color"]: pixel = f"\033[38;2;{r};{g};{b}m{pixel}"
+
+            text_frame += pixel
 
         text_frames.append(text_frame)
         count += 1
@@ -146,6 +149,8 @@ else:
 
     print("Skipped setup, using cached audio and ASCII!")
 
+if config["color"]: print("\033[0m")
+
 input("\n[READY] Bad Apple!! is ready. Press enter to play." )
 
 os.system(clear_command)
@@ -160,3 +165,7 @@ for frame in text_frames:
 
 if play_audio.is_alive():
     play_audio.terminate()
+
+if config["color"]: print("\033[0m")
+
+print("\nThanks for watching!")
