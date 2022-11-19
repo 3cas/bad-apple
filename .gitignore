@@ -3,4 +3,4 @@ __pycache__
 assets/
 frames/
 stored/
-config.json
+config*.json
